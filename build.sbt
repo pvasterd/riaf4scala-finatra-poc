@@ -7,8 +7,11 @@ scalaVersion := "2.11.5"
 
 val finatraVersion = "2.4.0"
 
-libraryDependencies += "com.twitter" %% "finatra-http" % finatraVersion
-libraryDependencies += "com.twitter" %% "finatra-http" % finatraVersion % "test" classifier "tests"
+libraryDependencies ++= Seq(
+  "com.twitter" %% "finatra-http" % finatraVersion,
+  "com.twitter" %% "finatra-http" % finatraVersion % "test" classifier "tests",
+  "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+)
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
