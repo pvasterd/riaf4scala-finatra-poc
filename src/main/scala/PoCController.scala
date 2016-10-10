@@ -1,11 +1,17 @@
 package nl.ing.poc.finatra
 
-import com.twitter.finatra.http.Controller
+import java.time.LocalDateTime
 
-/**
-  * Created by peter on 8-10-16.
-  */
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.twitter.finagle.http.Request
+import com.twitter.finatra.http.Controller
+import org.joda.time.DateTime
+
 class PoCController extends Controller {
+
+  get("/test/datetime") { req: Request  =>
+    DateTimeResponse(DateTime.now())
+  }
 
   post("/test/marshalling") { req : MarshallRequest =>
     MarshallResponse(countDescendents(req))
@@ -17,3 +23,4 @@ class PoCController extends Controller {
   }
 
 }
+
