@@ -1,3 +1,5 @@
+package nl.ing.poc.finatra
+
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
 import com.twitter.finatra.http.routing.HttpRouter

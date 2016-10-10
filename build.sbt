@@ -5,7 +5,7 @@ version := "1.0"
 scalaVersion := "2.11.5"
 
 
-val finatraVersion = "2.3.0"
+val finatraVersion = "2.4.0"
 
 libraryDependencies ++= Seq(
   "com.twitter" %% "finatra-http" % finatraVersion,

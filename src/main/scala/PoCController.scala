@@ -1,4 +1,5 @@
-import com.twitter.finagle.http.Request
+package nl.ing.poc.finatra
+
 import com.twitter.finatra.http.Controller
 
 /**
@@ -6,20 +7,11 @@ import com.twitter.finatra.http.Controller
   */
 class PoCController extends Controller {
 
-  get("/hi") { request: Request =>
-  info("hi")
-  "Hello " + request.params.getOrElse("name", "unnamed")
-}
-
-  post("/test/marshalling") { req : Marshalling.Request =>
-    Marshalling.Response(countDescendents(req))
+  post("/test/marshalling") { req : MarshallRequest =>
+    MarshallResponse(countDescendents(req))
   }
 
-  post("/test/marshalling2") { req : SimpleRequest =>
-    "Hi " + req.num32
-  }
-
-  def countDescendents(request: Marshalling.Request): Int = request.children match {
+  def countDescendents(request: MarshallRequest): Int = request.children match {
     case Nil | null => 0
     case list => list.foldLeft[Int](list.size)((a, b) => a + countDescendents(b))
   }
