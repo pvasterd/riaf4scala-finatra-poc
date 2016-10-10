@@ -15,8 +15,12 @@ class PoCController extends Controller {
     Marshalling.Response(countDescendents(req))
   }
 
+  post("/test/marshalling2") { req : SimpleRequest =>
+    "Hi " + req.num32
+  }
+
   def countDescendents(request: Marshalling.Request): Int = request.children match {
-    case Nil => 0
+    case Nil | null => 0
     case list => list.foldLeft[Int](list.size)((a, b) => a + countDescendents(b))
   }
 
